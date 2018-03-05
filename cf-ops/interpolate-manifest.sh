@@ -3,11 +3,9 @@ set -o pipefail
 build_root=$PWD
 
 
-#dump creds to file, but don't display to task output
-mkdir -p /tmp/cred_files
-
 set +x
-cat > /tmp/creds_files/apns << ENDDOC
+#dump creds to file, but don't display to task output
+cat > /tmp/creds_file << ENDDOC
 $CREDENTIALS_YAML
 ENDDOC
 
