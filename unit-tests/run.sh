@@ -1,4 +1,5 @@
-#!/bin/bash -euxo pipefail
+#!/bin/bash -eux
+set -o pipefail
 
 pushd subject
 
