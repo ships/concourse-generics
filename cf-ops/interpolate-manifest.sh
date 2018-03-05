@@ -14,5 +14,5 @@ set -x
 # generate manifest
 mkdir -p manifest
 bosh int "${build_root}/${SOURCE_FILE}" > manifest/fleet.yml \
-  --vars-from /tmp/creds_file
+  --vars-file /tmp/creds_file
 
