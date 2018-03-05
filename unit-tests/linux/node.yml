@@ -1,0 +1,16 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: node
+
+inputs:
+  - name: subject
+  - name: concourse-generics
+
+run:
+  path: concourse-generics/unit-tests/run.sh
+
+params: {}
+
