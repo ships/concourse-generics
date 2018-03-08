@@ -1,0 +1,11 @@
+---
+platform: darwin
+
+inputs:
+  - name: subject
+  - name: concourse-generics
+
+run:
+  path: concourse-generics/unit-tests/run.sh
+
+params: {}
