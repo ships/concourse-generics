@@ -1,0 +1,17 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: ruby
+    tag: "2.4.3"
+
+inputs:
+  - name: subject
+  - name: concourse-generics
+
+run:
+  path: concourse-generics/lint/run.sh
+
+params: {}
+
