@@ -21,12 +21,24 @@ subject: $SUBJECT
 message: $EXTRA_MESSAGE_DETAILS
 "
 
-pushd "src"
+function commit() {
 
+  git add -A .
   git commit -v -m "$SUBJECT
 
   $EXTRA_MESSAGE_DETAILS"
+}
 
+function commit_recursive() {
+  if [ $SUBMODULES ] && [ ! -z "$(git status -s)" ]; then
+    git submodule foreach commit-recursive
+  else
+    commit
+  fi
+}
+
+pushd "src"
+  commit-recursive
 popd
 
 cp -r src out
