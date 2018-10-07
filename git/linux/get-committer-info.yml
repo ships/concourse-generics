@@ -1,0 +1,19 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: ubuntu
+
+inputs:
+  - name: concourse-generics
+  - name: src
+
+outputs:
+  - name: out
+
+run:
+  path: concourse-generics/git/make-commit.sh
+
+params: {}
+

@@ -1,0 +1,26 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: ubuntu
+
+inputs:
+  - name: concourse-generics
+  - name: committer-info-passthrough
+    optional: true
+  - name: src
+
+outputs:
+  - name: out
+
+run:
+  path: concourse-generics/git/make-commit.sh
+
+params:
+  SUBMODULES: false
+  SUBJECT: ~
+  EXTRA_MESSAGE_DETAILS: ''
+  COMMITTER_NAME: 'concourse ci'
+  COMMITTER_EMAIL: ~
+
