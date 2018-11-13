@@ -13,7 +13,7 @@ outputs:
   - name: out
 
 run:
-  path: concourse-generics/git/make-commit.sh
+  path: concourse-generics/git/get-committer-info.sh
 
 params: {}
 
