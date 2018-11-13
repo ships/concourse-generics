@@ -1,10 +1,10 @@
-#!/bin/bash -eux
+#!/bin/sh -eux
 set -o pipefail
 
-pushd "src/${HUGO_ROOT_REL}"
+cd "src/${HUGO_ROOT_REL}"
 
   hugo
 
-popd
+cd -
 
 cp -R src/. mutated/
