@@ -10,11 +10,11 @@ inputs:
   - name: src
 
 outputs:
-  - name: www
+  - name: mutated
 
 run:
   path: concourse-generics/toolchains/hugo/compile.sh
 
 params:
-  HUGO_REL_ROOT: '/'
+  HUGO_ROOT_REL: '/'
 
