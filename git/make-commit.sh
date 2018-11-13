@@ -29,14 +29,14 @@ function commit() {
 
 function commit_recursive() {
   if [ $SUBMODULES ] && [ ! -z "$(git status -s)" ]; then
-    git submodule foreach commit-recursive
+    git submodule foreach commit_recursive
   else
     commit
   fi
 }
 
 pushd "src"
-  commit-recursive
+  commit_recursive
 popd
 
 cp -R src/. out/
