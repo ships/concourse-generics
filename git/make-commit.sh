@@ -1,8 +1,6 @@
 #!/bin/bash -eux
 set -o pipefail
 
-rm -rf out
-
 if [ -d committer-info-passthrough ]; then
   GIT_AUTHOR_NAME="$(cat committer-info-passthrough/author_name)"
   GIT_AUTHOR_EMAIL="$(cat committer-info-passthrough/author_email)"
@@ -41,4 +39,4 @@ pushd "src"
   commit-recursive
 popd
 
-cp -r src out
+cp -R src/. out/
