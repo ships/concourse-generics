@@ -35,6 +35,8 @@ function commit_recursive() {
   fi
 }
 
+export -f commit_recursive
+
 pushd "src"
   commit_recursive
 popd
