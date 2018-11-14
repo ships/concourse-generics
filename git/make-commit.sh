@@ -33,7 +33,7 @@ function commit() {
 export -f commit
 
 pushd "src"
-  git submodule foreach --recursive | tail -r | sed 's/Entering//' | xargs -I% cd % ; commit
+  git submodule foreach --recursive | tac | sed 's/Entering//' | xargs -I% cd % ; commit
 popd
 
 cp -R src/. out/
