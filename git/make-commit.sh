@@ -21,19 +21,22 @@ message: $EXTRA_MESSAGE_DETAILS
 
 export SUBJECT EXTRA_MESSAGE_DETAILS
 
-function commit() {
+cat >/tmp/commit <<"COMMIT_FUNC"
+  cd $1
+
   if [ ! -z "$(git status -s)" ]; then
     git add -A .
     git commit -v -m "$SUBJECT
 
     $EXTRA_MESSAGE_DETAILS"
   fi
-}
 
-export -f commit
+COMMIT_FUNC
+
+chmod +x /tmp/commit
 
 pushd "src"
-  git submodule foreach --recursive | tac | sed -e s/Entering//g -e s/\'//g | xargs -I% cd % ; commit
+  git submodule foreach --recursive | tac | sed -e s/Entering//g -e s/\'//g | xargs -I% /tmp/commit %
 popd
 
 cp -R src/. out/
