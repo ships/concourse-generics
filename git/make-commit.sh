@@ -32,6 +32,10 @@ cat >/tmp/commit <<"COMMIT_FUNC"
 
   if [ ! -z "$(git status -s)" ]; then
     git add -A .
+
+    branch="$(git branch --no-merged | tr -d [:blank:])"
+    git checkout $branch
+
     git commit -v -m "$SUBJECT
 
     $EXTRA_MESSAGE_DETAILS"
@@ -42,9 +46,7 @@ COMMIT_FUNC
 chmod +x /tmp/commit
 
 pushd "src"
-  branch="$(git branch --no-merged | tr -d [:blank:])"
   git submodule foreach --recursive | tac | sed -e s/Entering//g -e s/\'//g | xargs -I% /tmp/commit %
-  git checkout $branch
   /tmp/commit $PWD
 popd
 
