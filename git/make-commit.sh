@@ -19,26 +19,21 @@ subject: $SUBJECT
 message: $EXTRA_MESSAGE_DETAILS
 "
 
+export SUBJECT EXTRA_MESSAGE_DETAILS
+
 function commit() {
+  if [ ! -z "$(git status -s)" ]; then
+    git add -A .
+    git commit -v -m "$SUBJECT
 
-  git add -A .
-  git commit -v -m "$SUBJECT
-
-  $EXTRA_MESSAGE_DETAILS"
-}
-
-function commit_recursive() {
-  if [ $SUBMODULES ] && [ ! -z "$(git status -s)" ]; then
-    git submodule foreach commit_recursive
-  else
-    commit
+    $EXTRA_MESSAGE_DETAILS"
   fi
 }
 
-export -f commit_recursive
+export -f commit
 
 pushd "src"
-  commit_recursive
+  git submodule foreach --recursive | tail -r | sed 's/Entering//' | xargs -I% cd % ; commit
 popd
 
 cp -R src/. out/
