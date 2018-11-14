@@ -33,7 +33,7 @@ cat >/tmp/commit <<"COMMIT_FUNC"
   if [ ! -z "$(git status -s)" ]; then
     git add -A .
 
-    branch="$(git branch --no-merged | tr -d [:blank:])"
+    branch="$(git branch | grep -v '*.*detached' | tr -d [:blank:])"
     git checkout $branch
 
     git commit -v -m "$SUBJECT
