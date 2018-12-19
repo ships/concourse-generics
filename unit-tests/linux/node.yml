@@ -12,5 +12,5 @@ inputs:
 run:
   path: concourse-generics/unit-tests/run.sh
 
-params: {}
-
+params:
+  RUN_SCRIPT_ARGS:
