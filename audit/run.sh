@@ -4,6 +4,6 @@ set -o pipefail
 pushd subject
 
   ci/audit/setup || true
-  ci/audit/lint
+  ci/audit/audit
 
 popd
