@@ -10,6 +10,7 @@ if [ -d committer-info-passthrough ]; then
 else
   GIT_AUTHOR_NAME=$COMMITTER_NAME
   GIT_AUTHOR_EMAIL=$COMMITTER_EMAIL
+  EMAIL=$GIT_AUTHOR_EMAIL
 fi
 
 set -o nounset
@@ -22,6 +23,7 @@ message: $EXTRA_MESSAGE_DETAILS
 export \
   GIT_AUTHOR_NAME \
   GIT_AUTHOR_EMAIL \
+  EMAIL \
   GIT_COMMITTER_NAME \
   GIT_COMMITTER_EMAIL \
   SUBJECT \
