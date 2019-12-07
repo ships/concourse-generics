@@ -38,7 +38,7 @@ cat >/tmp/commit <<"COMMIT_FUNC"
     branch="$(git branch | grep -v '*.*detached' | tr -d [:blank:])"
     git checkout $branch
 
-    git commit -v -m "$SUBJECT
+    git commit -v --allow-empty -m "$SUBJECT
 
     $EXTRA_MESSAGE_DETAILS"
   fi
