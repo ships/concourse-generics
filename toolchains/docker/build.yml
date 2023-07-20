@@ -1,0 +1,17 @@
+config:
+ platform: linux
+
+ image_resource:
+   type: registry-image
+   source:
+     repository: concourse/oci-build-task
+
+ inputs:
+ - name: src
+   path: .
+
+ outputs:
+ - name: image
+
+ run:
+   path: build
